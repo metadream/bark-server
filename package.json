@@ -1,12 +1,12 @@
 {
-  "name": "private-apis",
-  "version": "2.0.0",
+  "name": "bark-server",
+  "version": "1.0.0",
   "scripts": {
     "start": "node main.js"
   },
   "dependencies": {
-    "apns2": "^11.0.1",
+    "apns2": "^11.1.0",
     "int-encoder": "^1.1.1",
-    "node-cross": "^1.0.5"
+    "node-cross": "^1.0.6"
   }
 }

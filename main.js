@@ -9,7 +9,7 @@ new Cross()
   ctx.set("Access-Control-Allow-Origin", "*");
   await next();
 })
-.get("/", () => "https://github.com/metadream/bark-server")
+.get("/", () => "Repo: https://github.com/metadream/bark-server")
 .get("/ping", bark.ping)
 .get("/register", bark.register)
 .post("/:key", bark.push)

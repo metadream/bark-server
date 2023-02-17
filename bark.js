@@ -2,7 +2,7 @@
  * Node.js implementation of the [bark-server](https://github.com/Finb/bark-server).
  * References: https://github.com/dss886/bark-server
  */
-const apns = require("../providers/apns.js");
+const apns = require("./apns.js");
 const coder = require('int-encoder');
 coder.alphabet("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
 
@@ -22,7 +22,7 @@ exports.ping = function () {
 exports.register = async function (ctx) {
   const { deviceToken } = ctx.query;
   if (!deviceToken) {
-    ctx.throw("Device token cannot be empty", 400);
+    ctx.throw("Device token cannot be empty.", 400);
   }
 
   const deviceKey = coder.encode(deviceToken, 16);
@@ -40,11 +40,11 @@ exports.register = async function (ctx) {
 exports.push = async function (ctx) {
   const deviceKey = ctx.params.key;
   if (!deviceKey) {
-    ctx.throw("Device key cannot be empty", 400);
+    ctx.throw("Device key cannot be empty.", 400);
   }
   const deviceToken = coder.decode(deviceKey, 16);
   if (deviceToken.length !== 64) {
-    ctx.throw("Device key is not compliant", 400);
+    ctx.throw("Device key is not compliant.", 400);
   }
 
   const req = await ctx.json();

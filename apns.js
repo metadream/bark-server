@@ -1,10 +1,11 @@
 /**
  * Apple Push Notification Service
- * Cert info from: https://github.com/Finb/bark-server/blob/master/deploy/AuthKey_LH4T9V5U4R_5U8LBRXG3A.p8
+ * Cert info from:
+ * https://github.com/Finb/bark-server/blob/master/deploy/AuthKey_LH4T9V5U4R_5U8LBRXG3A.p8
  */
-const { APNS, Notification } = require("apns2");
+const { ApnsClient, Notification } = require("apns2");
 
-const apns = new APNS({
+const apns = new ApnsClient({
   keyId: "LH4T9V5U4R",
   team: "5U8LBRXG3A",
   defaultTopic: "me.fin.bark",
