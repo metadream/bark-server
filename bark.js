@@ -20,15 +20,15 @@ exports.ping = function () {
  * @returns
  */
 exports.register = async function (ctx) {
-  const { deviceToken } = ctx.query;
-  if (!deviceToken) {
+  const { devicetoken } = ctx.query;
+  if (!devicetoken) {
     ctx.throw("Device token cannot be empty.", 400);
   }
 
-  const deviceKey = coder.encode(deviceToken, 16);
+  const key = coder.encode(devicetoken, 16);
   return {
     code: 200, message: "success",
-    data: { key: deviceKey, device_key: deviceKey, device_token: deviceToken }
+    data: { key, device_key: key, device_token: devicetoken }
   };
 }
 
@@ -38,12 +38,12 @@ exports.register = async function (ctx) {
  * @returns
  */
 exports.push = async function (ctx) {
-  const deviceKey = ctx.params.key;
-  if (!deviceKey) {
+  const { key, title, body } = ctx.params;
+  if (!key) {
     ctx.throw("Device key cannot be empty.", 400);
   }
-  const deviceToken = coder.decode(deviceKey, 16);
-  if (deviceToken.length !== 64) {
+  const devicetoken = coder.decode(key, 16);
+  if (devicetoken.length !== 64) {
     ctx.throw("Device key is not compliant.", 400);
   }
 
@@ -55,7 +55,10 @@ exports.push = async function (ctx) {
       "mutable-content": 1,
       sound: ctx.query.sound || req.sound || "1107",
       category: ctx.query.category || req.category,
-      alert: { title: req.title, body: req.body }
+      alert: {
+        title: title || req.title,
+        body: body || req.body
+      }
     },
     data: {
       url: ctx.query.url || req.url,
@@ -68,6 +71,6 @@ exports.push = async function (ctx) {
     }
   };
 
-  const result = await apns.push(deviceToken, payload);
+  const result = await apns.push(devicetoken, payload);
   return { code: 200, message: result };
 }
