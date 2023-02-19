@@ -2,11 +2,11 @@
   "name": "bark-server",
   "version": "1.0.0",
   "scripts": {
-    "start": "node main.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "apns2": "^11.1.0",
     "int-encoder": "^1.1.1",
-    "node-cross": "^1.0.6"
+    "node-cross": "^1.1.1"
   }
 }
