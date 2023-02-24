@@ -6,10 +6,10 @@
 const { ApnsClient, Notification } = require("apns2");
 
 const apns = new ApnsClient({
-  keyId: "LH4T9V5U4R",
-  team: "5U8LBRXG3A",
-  defaultTopic: "me.fin.bark",
-  signingKey: `
+    keyId: "LH4T9V5U4R",
+    team: "5U8LBRXG3A",
+    defaultTopic: "me.fin.bark",
+    signingKey: `
 -----BEGIN PRIVATE KEY-----
 MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQg4vtC3g5L5HgKGJ2+
 T1eA0tOivREvEAY2g+juRXJkYL2gCgYIKoZIzj0DAQehRANCAASmOs3JkSyoGEWZ
@@ -25,6 +25,6 @@ sUGxFs/4pw1rIlSV2IC19M8u3G5kq36upOwyFWj9Gi3Ejc9d3sC7+SHRqXrEAJow
  * @returns
  */
 apns.push = async function (deviceToken, payload) {
-  return await apns.send(new Notification(deviceToken, payload));
+    return await apns.send(new Notification(deviceToken, payload));
 }
 module.exports = apns;

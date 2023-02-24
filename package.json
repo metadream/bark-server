@@ -7,6 +7,6 @@
   "dependencies": {
     "apns2": "^11.1.0",
     "int-encoder": "^1.1.1",
-    "node-cross": "^1.1.5"
+    "nedos": "^0.0.2"
   }
 }
