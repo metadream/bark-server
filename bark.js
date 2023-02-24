@@ -19,7 +19,7 @@ exports.ping = function () {
  * @param {Context} ctx
  * @returns
  */
-exports.register = async function (ctx) {
+exports.register = function (ctx) {
     const { devicetoken } = ctx.query;
     if (!devicetoken) {
         ctx.throw("Device token cannot be empty.", 400);
