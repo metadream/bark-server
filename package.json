@@ -7,6 +7,6 @@
   "dependencies": {
     "apns2": "^11.1.0",
     "int-encoder": "^1.1.1",
-    "nodable": "^0.0.1"
+    "nodable": "^0.0.3"
   }
 }
